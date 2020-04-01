@@ -1,0 +1,9 @@
+<div class="upload-box">
+    <form [formGroup]="postData">
+        <mat-form-field appearance="outline" class="upload-textarea">
+            <textarea matInput placeholder="What's on your mind?" formControlName="text"></textarea>
+        </mat-form-field>
+
+        <button mat-stroked-button color="primary" (click)="uploadPost()">POST</button>
+    </form>
+</div>
