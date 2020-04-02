@@ -1,14 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-export class Post {
-  author: string;
-  text: string;
-
-  constructor(text, author = 'Anonymous') {
-    this.author = author;
-    this.text = text;
-  }
-}
+import { Post } from '../modules/posts/models/post';
+import { PostStore } from '../modules/posts/store/post.store.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'newsfeed',
@@ -16,14 +9,21 @@ export class Post {
   styleUrls: ['./newsfeed.component.scss']
 })
 export class NewsfeedComponent implements OnInit {
-  postList: Post[] = [];
+  posts$: Observable<Array<Post>>;
+  postsCount: number = 0;
 
-  constructor() {
-    // this.postList.push(new Post("this is post No.1"));
-    // this.postList.push(new Post("this is post No.2", 'hadar'));
+  constructor(private postStore: PostStore) {
+    this.posts$ = this.postStore.getPosts();
+
+    this.checkPostsAmount();
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  checkPostsAmount() {
+    this.posts$.subscribe(posts => {
+      this.postsCount = posts.length;
+    });
   }
 
 }

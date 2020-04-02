@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { PostStore } from '../modules/posts/store/post.store.service';
 
 @Component({
   selector: 'upload-post',
@@ -7,17 +8,17 @@ import { FormGroup, FormControl } from "@angular/forms";
   styleUrls: ['./upload-post.component.scss']
 })
 export class UploadPostComponent implements OnInit {
-  // postData: FormGroup;
-  postData = new FormGroup({
-    text: new FormControl()
-  });
+  postData: FormGroup;
+  // postData = new FormGroup({
+  //   text: new FormControl()
+  // });
 
-  constructor() { }
+  constructor(private postStore: PostStore) { }
 
   ngOnInit(): void {
-    // this.postData = new FormGroup({
-    //   newPostText: new FormControl('sdsde')
-    // });
+    this.postData = new FormGroup({
+      text: new FormControl(null, Validators.required)
+    });
   }
 
   uploadPost() {
@@ -25,6 +26,8 @@ export class UploadPostComponent implements OnInit {
 
     if (!this.postData.value.text || this.postData.value.text.trim() == '') return;
     
-    alert(`Post uploaded!! Content: ${this.postData.value.text}`);
+    this.postStore.uploadPost(this.postData.value.text, 'Hadar');
+
+    //alert(`Post uploaded!! Content: ${this.postData.value.text}`);
   }
 }
