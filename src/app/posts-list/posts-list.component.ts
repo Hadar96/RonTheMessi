@@ -12,8 +12,8 @@ export class PostsListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    //lets squash PRs
-    //lets mergeeeeee --NOOO
+    //lets merge PRs-NO
+    //lets mergeeeeee--NOOOOOOOOO
   }
 
 }
