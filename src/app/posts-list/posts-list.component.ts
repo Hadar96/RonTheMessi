@@ -12,7 +12,7 @@ export class PostsListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    //lets merge PRs
+    //lets merge PRs-NO
     //lets mergeeeeee--NOOOOOOOOO
   }
 
