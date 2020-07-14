@@ -16,6 +16,7 @@ export class PostsListComponent implements OnInit {
     //lets mergeeeeee--NOOOOOOOOO
     // new change in branch - SQUASHED
     // new change in branch - MERGED
+    // new change in branch - REBASED
   }
 
 }
